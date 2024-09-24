@@ -26,7 +26,7 @@ ALTER TABLE users ALTER COLUMN isadmin TYPE BOOLEAN USING isadmin::BOOLEAN;
 ALTER TABLE users ALTER COLUMN isadmin SET DEFAULT FALSE;
 
 -- 6. Add primary key constraint to id column
-ALTER TABLE users add constraint users_pk PRIMARY KEY (id);
+ALTER TABLE users ADD CONSTRAINT users_pk PRIMARY KEY (id);
 
 -- 7. Create table «tasks» with following fields
 -- • id (autoincrementing integer)

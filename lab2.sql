@@ -11,11 +11,11 @@ CREATE TABLE countries (
 
 -- 3. Insert a row with any data into the table countries
 INSERT INTO countries (country_name, region_id, population)
-VALUES ('Canada', 2, 38000000);
+VALUES ('UK', 0, 78000000);
 
 -- 4. Insert one row into the table countries (country_id and country_name only)
 INSERT INTO countries (country_id, country_name)
-VALUES (1, 'USA');
+VALUES (20, 'USA');
 
 -- 5. Insert NULL value to region_id column for a row in countries table
 INSERT INTO countries (country_name, region_id, population)
@@ -68,3 +68,9 @@ RETURNING *;
 -- 16. Remove all rows from countries table and return all deleted data
 DELETE FROM countries
 RETURNING *;
+
+
+DROP TABLE countries_new;
+DROP TABLE countries;
+
+DROP DATABASE lab2;

@@ -1,9 +1,6 @@
 -- 1. Create database called «lab1»
 CREATE DATABASE lab1;
 
-\c lab1;
-
-
 DROP TABLE IF EXISTS users;
 
 -- 2. Create table «users» with following fields
@@ -41,8 +38,6 @@ CREATE TABLE tasks (
 
 -- 8. Delete «tasks» table
 DROP TABLE tasks;
-
-\c postgres;
 
 -- 9. Delete «lab1» database
 DROP DATABASE lab1;

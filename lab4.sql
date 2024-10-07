@@ -1,3 +1,7 @@
+DROP TABLE IF EXISTS Boxes;
+DROP TABLE IF EXISTS Warehouses;
+DROP DATABASE lab4;
+
 -- 1. Create database called «lab4»
 CREATE DATABASE lab4;
 
@@ -83,5 +87,5 @@ DELETE FROM Boxes WHERE value < 150;
 -- 13. Remove all boxes which is located in New York. Statement
 -- should return all deleted data.
 DELETE FROM Boxes
-WHERE warehouse = (SELECT code FROM Warehouses WHERE location = 'New York')
+WHERE warehouse IN (SELECT code FROM Warehouses WHERE location = 'New York')
 RETURNING *;

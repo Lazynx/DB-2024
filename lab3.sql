@@ -27,7 +27,7 @@ CREATE TABLE customers (
     city VARCHAR(255)
 );
 
-INSERT INTO departments(code,name,budget) VALUES(14,'IT',65000);
+INSERT INTO departments(code,name,budget) VALUES(100,'TEST',13500);
 INSERT INTO departments(code,name,budget) VALUES(37,'Accounting',15000);
 INSERT INTO departments(code,name,budget) VALUES(59,'Human Resources',240000);
 INSERT INTO departments(code,name,budget) VALUES(77,'Research',55000);
@@ -73,10 +73,10 @@ SELECT * FROM employees WHERE lastname IN ('Smith', 'Doe');
 SELECT * FROM employees WHERE department = 14;
 
 -- Task 8: Select all the data of employees that work in department 37 or department 77
-SELECT * FROM employees WHERE department IN (37, 77);
+SELECT * FROM employees WHERE department between 37 and 77;
 
 -- Task 9: Select the sum of all the departments' budgets
-SELECT SUM(budget) FROM departments;
+SELECT avg(budget) FROM departments;
 
 -- Task 10: Select the number of employees in each department
 SELECT department, COUNT(*) FROM employees GROUP BY department;
@@ -101,12 +101,12 @@ SELECT name, lastname FROM customers WHERE city = 'Almaty';
 
 -- Task 15: Select all departments with budget more than 60000, sorted by increasing budget and decreasing code
 SELECT * FROM departments WHERE budget > 60000
-ORDER BY budget ASC;
+ORDER BY code DESC;
 
 -- Task 16: Reduce the budget of department with lowest budget by 10%
 UPDATE departments
 SET budget = budget * 0.9
-WHERE budget = (SELECT MIN(budget) FROM departments);
+WHERE code = (SELECT code FROM departments order by budget ASC limit 1);
 
 -- Task 17: Reassign all employees from the Research department to the IT department
 UPDATE employees

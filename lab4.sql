@@ -6,7 +6,6 @@ DROP DATABASE lab4;
 CREATE DATABASE lab4;
 
 -- 2. Create following tables «Warehouses» and «Boxes»:
-
 CREATE TABLE Warehouses (
     code INTEGER PRIMARY KEY,
     location VARCHAR(255),
@@ -23,7 +22,6 @@ CREATE TABLE Boxes (
 
 -- Download lab4.sql file from intranet. Copy content of the file
 -- and run using Query Tool (check if tables created)
-
 INSERT INTO Warehouses (code, location, capacity) VALUES
 (1, 'Chicago', 3),
 (2, 'Chicago', 4),

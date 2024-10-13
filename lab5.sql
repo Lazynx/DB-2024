@@ -2,7 +2,7 @@
 CREATE DATABASE lab5;
 
 -- 2. Create following table «customers» and «orders»:
-CREATE TABLE CUSTOMERS (
+CREATE TABLE customers (
     customer_id INT primary key,
     cust_name varchar(50),
     city varchar(50),
@@ -19,7 +19,7 @@ INSERT INTO customers (customer_id, cust_name, city, grade, salesman_id) VALUES
 (3009, 'Geoff Camero', 'Berlin', 100, 5003),
 (3008, 'Julian Green', 'London', 300, 5002);
 
-CREATE TABLE ORDERS (
+CREATE TABLE orders (
     ord_no INT primary key,
     purch_amt DECIMAL(10, 2),
     ord_date DATE,
@@ -50,3 +50,37 @@ INSERT INTO salesman (salesman_id, name, city, commission) VALUES
 (5006, 'Mc Lyon', 'Paris', 0.14),
 (5003, 'Lauson Hen', 'San Jose', 0.12),
 (5007, 'Paul Adam', 'Rome', 0.13);
+
+-- 3. Select the total purchase amount of all orders.
+SELECT SUM(purch_amt) FROM orders;
+
+-- 4. Select the average purchase amount of all orders.
+SELECT AVG(purch_amt) FROM orders;
+
+-- 5. Select how many customer have listed their names.
+SELECT COUNT(*) AS customer_name
+FROM CUSTOMERS
+WHERE cust_name IS NOT NULL;
+
+-- 6. Select the minimum purchase amount of all the orders.
+SELECT MIN(purch_amt) FROM orders;
+
+-- 7. Select customer with all information whose name ends with the
+-- letter 'b'.
+SELECT * FROM customers WHERE cust_name LIKE '%b';
+
+-- 8. Select orders which made by customers from ‘New York’.
+SELECT orders.* FROM orders JOIN customers ON orders.customer_id = customers.customer_id WHERE customers.city = 'New York';
+
+-- 9.Select customers with all information who has order with
+-- purchase amount more than 10.
+SELECT customers.* FROM customers JOIN orders ON customers.customer_id = orders.customer_id WHERE orders.purch_amt > 10;
+
+-- 10. Select total grade of all customers.
+SELECT SUM(grade) FROM customers;
+
+-- 11. Select all customers who have listed their names.
+SELECT * FROM CUSTOMERS WHERE cust_name IS NOT NULL;
+
+-- 12. Select the maximum grade of all the customers.
+SELECT MAX(grade) FROM customers;

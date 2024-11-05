@@ -51,6 +51,8 @@ INSERT INTO salesman (salesman_id, name, city, commission) VALUES
 (5003, 'Lauson Hen', 'San Jose', 0.12),
 (5007, 'Paul Adam', 'Rome', 0.13);
 
+select cust_name from customers c join orders o on c.customer_id = o.customer_id join salesman s on c.salesman_id = s.salesman_id where c.city != s.city;
+
 -- 3. Select the total purchase amount of all orders.
 SELECT SUM(purch_amt) FROM orders;
 

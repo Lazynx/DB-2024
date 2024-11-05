@@ -72,7 +72,7 @@ JOIN departments d on e.department_id = d.department_id;
 SELECT e.first_name, e.last_name, e.department_id, d.department_name
 FROM employees e
 JOIN departments d ON e.department_id = d.department_id
-WHERE e.department_id IN (80, 40);
+WHERE e.department_id = 80 or e.department_id = 40;
 
 -- 5. Select the first and last name, department, city, and state province for each employee.
 SELECT

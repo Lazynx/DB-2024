@@ -28,16 +28,16 @@ CREATE TABLE employees (
 );
 
 INSERT INTO locations (street_address, postal_code, city, state_province) VALUES
-('123 Main St', '12345', 'Almaty', 'Alm'),
-('456 Oak St', '23456', 'Nur-Sultan', 'Nur'),
-('789 Pine St', '34567', 'Shymkent', 'Shy'),
-('101 Maple St', '45678', 'Aktobe', 'Akt'),
-('102 Birch St', '56789', 'Atyrau', 'Aty'),
-('103 Cedar St', '67890', 'Karaganda', 'Kar'),
-('104 Elm St', '78901', 'Pavlodar', 'Pav'),
-('105 Willow St', '89012', 'Kostanay', 'Kos'),
-('106 Aspen St', '90123', 'Taraz', 'Tar'),
-('107 Spruce St', '01234', 'Semey', 'Sem');
+('123 Main St', '12345', 'Test', 'Alm');
+-- ('456 Oak St', '23456', 'Nur-Sultan', 'Nur'),
+-- ('789 Pine St', '34567', 'Shymkent', 'Shy'),
+-- ('101 Maple St', '45678', 'Aktobe', 'Akt'),
+-- ('102 Birch St', '56789', 'Atyrau', 'Aty'),
+-- ('103 Cedar St', '67890', 'Karaganda', 'Kar'),
+-- ('104 Elm St', '78901', 'Pavlodar', 'Pav'),
+-- ('105 Willow St', '89012', 'Kostanay', 'Kos'),
+-- ('106 Aspen St', '90123', 'Taraz', 'Tar'),
+-- ('107 Spruce St', '01234', 'Semey', 'Sem');
 
 INSERT INTO departments (department_name, budget, location_id) VALUES
 ('HR', 50000, 1),
@@ -100,3 +100,9 @@ d.department_id,
 d.department_name
 FROM employees e
 LEFT JOIN departments d ON e.department_id = d.department_id;
+
+SELECT l.city, SUM(e.salary * 12) as total_salary_per_year
+FROM locations l
+LEFT JOIN departments d on d.location_id = l.location_id
+LEFT JOIN employees e on d.department_id = e.department_id
+GROUP BY l.city;

@@ -51,5 +51,5 @@ CREATE UNIQUE INDEX idx_employees_salary_range ON employees(salary);
 CREATE INDEX idx_employees_name_prefix ON employees((substring(name FROM 1 FOR 4)));
 
 -- 5. Create index on 'budget' in 'departments' and 'salary' in 'employees' for join queries
-CREATE INDEX idx_departments_budget ON departments(budget);
-CREATE INDEX idx_employees_salary ON employees(salary);
+CREATE INDEX idx_employees_departments_id_salary ON employees (department_id, salary);
+CREATE INDEX idx_departments_id_budget ON departments (department_id, budget);

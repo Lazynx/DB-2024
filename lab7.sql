@@ -40,7 +40,6 @@ INSERT INTO departments (department_name, budget) VALUES
 -- 1. Creating an index on the 'name' column in the 'countries' table
 CREATE INDEX idx_countries_name ON countries(name);
 
-
 -- 2. Create index on 'name' and 'surname' columns in 'employees' for combined name search
 CREATE INDEX idx_employees_name_surname ON employees(name, surname);
 

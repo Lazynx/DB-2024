@@ -1,3 +1,31 @@
+CREATE DATABASE lab10;
+
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    position VARCHAR(100),
+    salary DECIMAL(10, 2)
+);
+
+INSERT INTO employees (name, position, salary)
+VALUES
+    ('John Doe', 'Manager', 5000.00),
+    ('Jane Smith', 'Developer', 4000.00),
+    ('Alice Johnson', 'Analyst', 4500.00);
+
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    price DECIMAL(10, 2),
+    category VARCHAR(100)
+);
+
+INSERT INTO products (name, price, category)
+VALUES
+    ('Laptop', 1200.00, 'Electronics'),
+    ('Phone', 800.00, 'Electronics'),
+    ('Desk', 150.00, 'Furniture');
+
 -- Task 1: Increase Value by 10
 CREATE OR REPLACE PROCEDURE increase_value(IN input_value INT, OUT result_value INT)
 LANGUAGE plpgsql AS $$
@@ -9,7 +37,7 @@ $$;
 CALL increase_value(10, 0);
 
 -- Task 2: Compare Numbers
-CREATE OR REPLACE PROCEDURE compare_numbers(IN num1 INT, IN num2 INT, OUT comparison_result TEXT)
+CREATE OR REPLACE PROCEDURE compare_numbers(IN num1 INT, IN num2 INT, OUT comparison_result VARCHAR)
 LANGUAGE plpgsql AS $$
 BEGIN
     IF num1 > num2 THEN
@@ -22,10 +50,10 @@ BEGIN
 END;
 $$;
 
-CALL compare_numbers(5, 10, 0);
+CALL compare_numbers(5, 10, '');
 
 -- Task 3: Generate Number Series
-CREATE OR REPLACE PROCEDURE number_series(IN n INT, OUT series TEXT)
+CREATE OR REPLACE PROCEDURE number_series(IN n INT, OUT series VARCHAR)
 LANGUAGE plpgsql AS $$
 DECLARE
     i INT := 1;
@@ -38,7 +66,7 @@ BEGIN
 END;
 $$;
 
-CALL number_series(5, 0);
+CALL number_series(5, '');
 
 -- Task 4: Find Employee
 CREATE OR REPLACE PROCEDURE find_employee(IN employee_name VARCHAR)
@@ -48,7 +76,8 @@ BEGIN
 END;
 $$;
 
-CALL find_employee('John Doe', 0);
+CALL find_employee('John Doe');
+
 
 -- Task 5: List Products by Category
 CREATE OR REPLACE PROCEDURE list_products(IN category_name VARCHAR)
@@ -58,7 +87,7 @@ BEGIN
 END;
 $$;
 
-CALL list_products('Electronics', 0);
+CALL list_products('Electronics');
 
 -- Task 6: Nested Procedures - Calculate Bonus and Update Salary
 CREATE OR REPLACE PROCEDURE calculate_bonus(IN salary DECIMAL, OUT bonus DECIMAL)
@@ -80,10 +109,10 @@ BEGIN
 END;
 $$;
 
-CALL update_salary(1, 0);
+CALL update_salary(1);
 
 -- Task 7: Complex Calculation
-CREATE OR REPLACE PROCEDURE complex_calculation(IN num1 INT, IN str1 VARCHAR, OUT result TEXT)
+CREATE OR REPLACE PROCEDURE complex_calculation(IN num1 INT, IN str1 VARCHAR, OUT result VARCHAR)
 LANGUAGE plpgsql AS $$
 DECLARE
     numeric_result INT;

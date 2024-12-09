@@ -97,6 +97,8 @@ BEGIN
 END;
 $$;
 
+CALL calculate_bonus(1.1, 0.0);
+
 CREATE OR REPLACE PROCEDURE update_salary(IN employee_id INT)
 LANGUAGE plpgsql AS $$
 DECLARE
